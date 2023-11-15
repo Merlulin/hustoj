@@ -1,0 +1,4 @@
+#!/bin/bash
+cd $1
+for i in *.ans;do mv $i `basename -s .ans $i`.out; done;
+dos2unix *.in *.out

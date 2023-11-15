@@ -1,0 +1,170 @@
+No syntax errors detected in Main.php
+OJ_HOST_NAME=127.0.0.1
+OJ_USER_NAME=db_demo
+OJ_PASSWORD=8vGjNEcKEqTcOUV30EiNQ23b6B2JTl
+OJ_DB_NAME=jol_demo
+OJ_PORT_NUMBER=3306
+OJ_JAVA_TIME_BONUS=0
+OJ_JAVA_MEMORY_BONUS=0
+OJ_JAVA_XMS=-Xms64M
+OJ_JAVA_XMX=-Xmx128M
+OJ_SIM_ENABLE=1
+OJ_HTTP_JUDGE=0
+OJ_HTTP_BASEURL=http://127.0.0.1/JudgeOnline
+OJ_HTTP_USERNAME=deepin2019
+OJ_HTTP_PASSWORD=admin
+OJ_OI_MODE=1
+OJ_SHM_RUN=0
+OJ_USE_MAX_TIME=0
+OJ_TIME_LIMIT_TO_TOTAL=1
+OJ_COMPILE_CHROOT=0
+OJ_TURBO_MODE=0
+OJ_CPU_COMPENSATION=5
+OJ_PYTHON_FREE=0
+OJ_COPY_DATA=0
+OJ_USE_PTRACE=0
+OJ_USE_DOCKER=1
+OJ_CC_STD=-std=c89
+OJ_CPP_STD=-std=c++17
+buffer size overflow!...
+mkdir /var/www/virtual/demo.hustoj.com/hustoj//run1/
+/bin/umount -l /var/www/virtual/demo.hustoj.com/hustoj//run1//usr 2>/dev/null
+/bin/umount -l /var/www/virtual/demo.hustoj.com/hustoj//run1//proc 2>/dev/null
+/bin/umount -l /var/www/virtual/demo.hustoj.com/hustoj//run1//dev 2>/dev/null
+/bin/umount -l /var/www/virtual/demo.hustoj.com/hustoj//run1//usr 2>/dev/null
+/bin/umount -l usr dev
+/bin/rmdir /var/www/virtual/demo.hustoj.com/hustoj//run1//* 
+/bin/rmdir /var/www/virtual/demo.hustoj.com/hustoj//run1//log/* 
+/bin/rmdir /var/www/virtual/demo.hustoj.com/hustoj//run1//log/* 2>/dev/null
+/bin/rm -rf /var/www/virtual/demo.hustoj.com/hustoj//run1//log/* 2>/dev/null
+mkdir /var/www/virtual/demo.hustoj.com/hustoj//run1//log/ 2>/dev/null
+/bin/mv /var/www/virtual/demo.hustoj.com/hustoj//run1//* /var/www/virtual/demo.hustoj.com/hustoj//run1//log/ 2>/dev/null
+cid:0
+Main=ð&zýchown judge /var/www/virtual/demo.hustoj.com/hustoj//run1//Main.php
+time: 1 mem: 128
+status=0
+/bin/umount -l bin usr lib lib64 etc/alternatives dev 2>/dev/null
+/bin/umount -l /var/www/virtual/demo.hustoj.com/hustoj//run1//usr 2>/dev/null
+/bin/umount -l /var/www/virtual/demo.hustoj.com/hustoj//run1//proc 2>/dev/null
+/bin/umount -l /var/www/virtual/demo.hustoj.com/hustoj//run1//dev 2>/dev/null
+/bin/umount -l /var/www/virtual/demo.hustoj.com/hustoj//run1//usr 2>/dev/null
+/bin/umount -l usr dev
+/bin/rmdir /var/www/virtual/demo.hustoj.com/hustoj//run1//* 
+/bin/rmdir /var/www/virtual/demo.hustoj.com/hustoj//run1//log/* 
+/bin/umount -l /var/www/virtual/demo.hustoj.com/hustoj//run1//usr 2>/dev/null
+/bin/umount -l /var/www/virtual/demo.hustoj.com/hustoj//run1//proc 2>/dev/null
+/bin/umount -l /var/www/virtual/demo.hustoj.com/hustoj//run1//dev 2>/dev/null
+/bin/umount -l /var/www/virtual/demo.hustoj.com/hustoj//run1//usr 2>/dev/null
+/bin/umount -l usr dev
+/bin/rmdir /var/www/virtual/demo.hustoj.com/hustoj//run1//* 
+/bin/rmdir /var/www/virtual/demo.hustoj.com/hustoj//run1//log/* 
+file name:..
+ext name:..
+	:0
+file name:sample.out
+ext name:out
+	:0
+file name:.
+ext name:
+	:0
+file name:ac
+ext name:ac
+	:0
+file name:sample.in
+ext name:.in
+	:6
+total test case:1 
+test file 1 : sample.in
+/bin/mkdir /var/www/virtual/demo.hustoj.com/hustoj//run1//lib
+/bin/mkdir /var/www/virtual/demo.hustoj.com/hustoj//run1//lib64
+/bin/mkdir /var/www/virtual/demo.hustoj.com/hustoj//run1//bin
+/bin/cp /bin/busybox /var/www/virtual/demo.hustoj.com/hustoj//run1//bin/
+/bin/ln -s /bin/busybox /var/www/virtual/demo.hustoj.com/hustoj//run1//bin/sh
+/bin/cp /bin/bash /var/www/virtual/demo.hustoj.com/hustoj//run1//bin/bash
+/bin/mkdir /var/www/virtual/demo.hustoj.com/hustoj//run1//usr
+/bin/mkdir /var/www/virtual/demo.hustoj.com/hustoj//run1//usr/lib
+/bin/mkdir -p /var/www/virtual/demo.hustoj.com/hustoj//run1//lib/x86_64-linux-gnu
+/bin/mkdir -p /var/www/virtual/demo.hustoj.com/hustoj//run1//usr/lib/x86_64-linux-gnu
+/bin/cp /usr/lib/libedit* /var/www/virtual/demo.hustoj.com/hustoj//run1//usr/lib/
+/bin/cp /usr/lib/libdb* /var/www/virtual/demo.hustoj.com/hustoj//run1//usr/lib/
+/bin/cp /usr/lib/libgssapi_krb5* /var/www/virtual/demo.hustoj.com/hustoj//run1//usr/lib/
+/bin/cp /usr/lib/libkrb5* /var/www/virtual/demo.hustoj.com/hustoj//run1//usr/lib/
+/bin/cp /usr/lib/libk5crypto* /var/www/virtual/demo.hustoj.com/hustoj//run1//usr/lib/
+/bin/cp /usr/lib/*/libedit* /var/www/virtual/demo.hustoj.com/hustoj//run1//usr/lib/
+/bin/cp /usr/lib/*/libdb* /var/www/virtual/demo.hustoj.com/hustoj//run1//usr/lib/
+/bin/cp /usr/lib/*/libgssapi_krb5* /var/www/virtual/demo.hustoj.com/hustoj//run1//usr/lib/
+/bin/cp /usr/lib/*/libkrb5* /var/www/virtual/demo.hustoj.com/hustoj//run1//usr/lib/
+/bin/cp /usr/lib/*/libk5crypto* /var/www/virtual/demo.hustoj.com/hustoj//run1//usr/lib/
+/bin/cp /usr/lib/libxml2* /var/www/virtual/demo.hustoj.com/hustoj//run1//usr/lib/
+/bin/cp /lib/x86_64-linux-gnu/libargon2.so.1 /var/www/virtual/demo.hustoj.com/hustoj//run1//lib/x86_64-linux-gnu
+/bin/cp /lib/x86_64-linux-gnu/libresolv.so.2 /var/www/virtual/demo.hustoj.com/hustoj//run1//lib/x86_64-linux-gnu
+/bin/cp /lib/x86_64-linux-gnu/libm.so.6 /var/www/virtual/demo.hustoj.com/hustoj//run1//lib/x86_64-linux-gnu
+/bin/cp /lib/x86_64-linux-gnu/libdl.so.2 /var/www/virtual/demo.hustoj.com/hustoj//run1//lib/x86_64-linux-gnu
+/bin/cp /lib/x86_64-linux-gnu/libpcre2-8.so.0 /var/www/virtual/demo.hustoj.com/hustoj//run1//lib/x86_64-linux-gnu
+/bin/cp /lib/x86_64-linux-gnu/libz.so.1 /var/www/virtual/demo.hustoj.com/hustoj//run1//lib/x86_64-linux-gnu
+/bin/cp /lib/x86_64-linux-gnu/libsodium.so.23 /var/www/virtual/demo.hustoj.com/hustoj//run1//lib/x86_64-linux-gnu
+/bin/cp /lib/x86_64-linux-gnu/libc.so.6 /var/www/virtual/demo.hustoj.com/hustoj//run1//lib/x86_64-linux-gnu
+/bin/cp /lib/x86_64-linux-gnu/libpthread.so.0 /var/www/virtual/demo.hustoj.com/hustoj//run1//lib/x86_64-linux-gnu
+/bin/cp /lib/x86_64-linux-gnu/libicuuc.so.66 /var/www/virtual/demo.hustoj.com/hustoj//run1//lib/x86_64-linux-gnu
+/bin/cp /lib/x86_64-linux-gnu/liblzma.so.5 /var/www/virtual/demo.hustoj.com/hustoj//run1//lib/x86_64-linux-gnu
+/bin/cp /lib/x86_64-linux-gnu/libicudata.so.66 /var/www/virtual/demo.hustoj.com/hustoj//run1//lib/x86_64-linux-gnu
+/bin/cp /lib/x86_64-linux-gnu/libxml2.so* /var/www/virtual/demo.hustoj.com/hustoj//run1//lib/x86_64-linux-gnu
+/bin/cp /lib/x86_64-linux-gnu/libicuuc.so* /var/www/virtual/demo.hustoj.com/hustoj//run1//lib/x86_64-linux-gnu
+/bin/cp /lib/x86_64-linux-gnu/libicudata.so* /var/www/virtual/demo.hustoj.com/hustoj//run1//lib/x86_64-linux-gnu
+/bin/cp /lib/x86_64-linux-gnu/libstdc++.so* /var/www/virtual/demo.hustoj.com/hustoj//run1//lib/x86_64-linux-gnu
+/bin/cp /lib/x86_64-linux-gnu/libssl* /var/www/virtual/demo.hustoj.com/hustoj//run1//lib/x86_64-linux-gnu
+/bin/cp /lib/x86_64-linux-gnu/libcrypto* /var/www/virtual/demo.hustoj.com/hustoj//run1//lib/x86_64-linux-gnu
+/bin/cp /lib/x86_64-linux-gnu/libgcc_s.so.1 /var/www/virtual/demo.hustoj.com/hustoj//run1//lib/x86_64-linux-gnu
+/bin/cp /lib64/ld-linux-x86-64.so.2 /var/www/virtual/demo.hustoj.com/hustoj//run1//lib64
+/bin/cp /usr/lib64/libtinfo.so.5 /var/www/virtual/demo.hustoj.com/hustoj//run1//usr/lib64
+/bin/cp /usr/lib64/libtinfo.so.6 /var/www/virtual/demo.hustoj.com/hustoj//run1//usr/lib64
+/bin/cp /lib64/ld-linux-x86-64.so.2 /var/www/virtual/demo.hustoj.com/hustoj//run1//lib64
+/bin/cp /usr/lib/x86_64-linux-gnu/libxml2.so* /var/www/virtual/demo.hustoj.com/hustoj//run1//usr/lib/x86_64-linux-gnu/
+/bin/cp /usr/lib/x86_64-linux-gnu/libtinfo.so* /var/www/virtual/demo.hustoj.com/hustoj//run1//usr/lib/x86_64-linux-gnu/
+/bin/cp /usr/lib/x86_64-linux-gnu/libxml2.so* /var/www/virtual/demo.hustoj.com/hustoj//run1//usr/lib/x86_64-linux-gnu/
+/bin/cp /usr/lib/x86_64-linux-gnu/libxml2.so* /var/www/virtual/demo.hustoj.com/hustoj//run1//usr/lib/x86_64-linux-gnu/
+/bin/cp /usr/lib/x86_64-linux-gnu/libxml2.so* /var/www/virtual/demo.hustoj.com/hustoj//run1//usr/lib/x86_64-linux-gnu/
+/bin/cp /usr/lib/x86_64-linux-gnu/libicuuc.so* /var/www/virtual/demo.hustoj.com/hustoj//run1//usr/lib/
+/bin/cp /usr/lib/x86_64-linux-gnu/libicudata.so* /var/www/virtual/demo.hustoj.com/hustoj//run1//usr/lib/
+/bin/cp /usr/lib/x86_64-linux-gnu/libstdc++.so* /var/www/virtual/demo.hustoj.com/hustoj//run1//usr/lib/
+/bin/cp /usr/lib/x86_64-linux-gnu/libssl* /var/www/virtual/demo.hustoj.com/hustoj//run1//usr/lib/
+/bin/cp /usr/lib/x86_64-linux-gnu/libcrypto* /var/www/virtual/demo.hustoj.com/hustoj//run1//usr/lib/
+/bin/cp /usr/bin/php* /var/www/virtual/demo.hustoj.com/hustoj//run1//
+chmod +rx /var/www/virtual/demo.hustoj.com/hustoj//run1//Main.php
+reading mark from sample.in 
+/bin/cp /var/www/virtual/demo.hustoj.com/hustoj//data/1091/*.dic /var/www/virtual/demo.hustoj.com/hustoj//run1// 2>/dev/null
+chown judge /var/www/virtual/demo.hustoj.com/hustoj//run1//*.dic 
+init_call_counter:7
+SYS_execve:59
+infile: [/var/www/virtual/demo.hustoj.com/hustoj//data/1091/sample.in]
+touch /var/www/virtual/demo.hustoj.com/hustoj//run1//user.out
+chmod 760 /var/www/virtual/demo.hustoj.com/hustoj//run1//user.out
+data/1091/*.dic /var/www/virtual/demo.hustoj.com/hustoj//run1// 2>/dev/null
+chown judge /var/www/virtual/demo.hustoj.com/hustoj//run1//*.dic 
+init_call_counter:7
+SYS_execve:59
+pid=214107 judging /var/www/virtual/demo.hustoj.com/hustoj//data/1091/sample.in
+/1091/sample.in: mem=1839104 time=20
+time:20/20
+echo '========[sample.out]========='>>diff.out
+echo 'Expected						      |	Yours'>>diff.out
+diff '/var/www/virtual/demo.hustoj.com/hustoj//data/1091/sample.out' user.out -y|head -100>>diff.out
+echo '
+=============================='>>diff.out
+fail test /var/www/virtual/demo.hustoj.com/hustoj//data/1091/sample.in
+use total time:20
+ACflg:4
+finalACflg:6
+sql:[UPDATE `problem` SET `accepted`=(SELECT count(*) FROM `solution` WHERE `problem_id`=1091 AND `result`=4) WHERE `problem_id`=1091]
+/bin/umount -l /var/www/virtual/demo.hustoj.com/hustoj//run1//usr 2>/dev/null
+/bin/umount -l /var/www/virtual/demo.hustoj.com/hustoj//run1//proc 2>/dev/null
+/bin/umount -l /var/www/virtual/demo.hustoj.com/hustoj//run1//dev 2>/dev/null
+/bin/umount -l /var/www/virtual/demo.hustoj.com/hustoj//run1//usr 2>/dev/null
+/bin/umount -l usr dev
+/bin/rmdir /var/www/virtual/demo.hustoj.com/hustoj//run1//* 
+/bin/rmdir /var/www/virtual/demo.hustoj.com/hustoj//run1//log/* 
+/bin/rmdir /var/www/virtual/demo.hustoj.com/hustoj//run1//log/* 2>/dev/null
+/bin/rm -rf /var/www/virtual/demo.hustoj.com/hustoj//run1//log/* 2>/dev/null
+mkdir /var/www/virtual/demo.hustoj.com/hustoj//run1//log/ 2>/dev/null
+/bin/mv /var/www/virtual/demo.hustoj.com/hustoj//run1//* /var/www/virtual/demo.hustoj.com/hustoj//run1//log/ 2>/dev/null
+result=6
