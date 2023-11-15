@@ -316,23 +316,45 @@ function selectMulti( num, answer){
 		$("div.md").each(function(){
 			$(this).html(marked.parse($(this).text()));
 		});
+	       
+    $(".md table tr td").css({
+            "border": "1px solid grey",
+            "text-align": "center",
+            "width": "200px",
+            "height": "30px"
+        });
+
+        $(".md table th").css({
+            "border": "1px solid grey",
+            "width": "200px",
+            "height": "30px",
+            "background-color": "#9e9e9ea1",
+            "text-align": "center"
+        });
+	        
 	<?php } ?>
-	//单纯文本1. A. B. C. D. 自动变控件
-	$('span[class=auto_select]').each(function(){
+	        //单纯文本1. A. B. C. D. 自动变控件
+        $('span[class=auto_select]').each(function(){
                 let i=1;
                 let start=0;
+                let next=0;
                 let raw=$(this).html();
                 let options=['A','B','C','D'];
                 while(start>=0){
-                        start=raw.indexOf(i+".",start);
+                        start=raw.indexOf("\n"+i+".",start);
                         if(start<0) break;
                         let end=start;
                         let type="radio"
                         for(let j=0;j<4;j++){
                                 let option=options[j];
                                 end=raw.indexOf(option+".",start);
+                                next=raw.indexOf("\n"+(i+1)+".",start);
+                                if ( end<0 || ( end > next && next > 0 )) {
+                                        console.log("i:"+i+" j:"+option+" end:"+end+" next:"+next);
+                                        end=start;
+                                        break;
+                                }
                                 if(j==0&&raw.substring(start,end).indexOf("多选")>0) type="checkbox";
-                                if (end<0) break;
                                 let disp="<input type=\""+type+"\" name=\""+i+"\" value=\""+option+"\" />"+option+".";
                                 //console.log(disp);
                                 raw= raw.substring(0,end-1)+disp+raw.substring(end+2);
@@ -344,6 +366,8 @@ function selectMulti( num, answer){
                 //console.log(raw);
                 $(this).html(raw);
         });
+
+
 
 
         $('input[type="radio"]').click(function(){

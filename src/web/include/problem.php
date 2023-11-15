@@ -1,9 +1,13 @@
 <?php
-function addproblem($title, $time_limit, $memory_limit, $description, $input, $output, $sample_input, $sample_output, $hint, $source, $spj, $OJ_DATA) {
-  //$spj=($spj);
+function addproblem($title, $time_limit, $memory_limit, $description, $input, $output, $sample_input, $sample_output, $hint, $source, $spj, $OJ_DATA, $contest_score = "") {
+	//$spj=($spj);
+  if($contest_score == "" || empty($contest_score) || is_null($contest_score)){
   $sql = "INSERT INTO `problem` (`title`,`time_limit`,`memory_limit`,`description`,`input`,`output`,`sample_input`,`sample_output`,`hint`,`source`,`spj`,`in_date`,`defunct`) VALUES(?,?,?,?,?,?,?,?,?,?,?,NOW(),'Y')";
-  //echo $sql;
   $pid = pdo_query($sql, $title, $time_limit, $memory_limit, $description, $input, $output, $sample_input, $sample_output, $hint, $source, $spj);
+  }else{
+  $sql = "INSERT INTO `problem` (`title`,`time_limit`,`memory_limit`,`description`,`input`,`output`,`sample_input`,`sample_output`,`hint`,`source`,`spj`,`in_date`,`defunct`, `ladder_score`) VALUES(?,?,?,?,?,?,?,?,?,?,?,NOW(),'Y',?)";
+  $pid = pdo_query($sql, $title, $time_limit, $memory_limit, $description, $input, $output, $sample_input, $sample_output, $hint, $source, $spj, $contest_score);
+  }
 
   echo "&nbsp;&nbsp;- Problem ID $pid added!<br>";
 

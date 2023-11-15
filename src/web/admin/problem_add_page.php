@@ -32,8 +32,11 @@
           <input class="input input-mini" type=number min="0.001" max="300" step="0.001" name=time_limit size=20 value=1> sec<br><br>
           <?php echo $MSG_Memory_Limit?><br>
           <input class="input input-mini" type=number min="1" max="2048" step="1" name=memory_limit size=20 value=128> MiB<br><br>
+	 
+	  <?php echo $MSG_Contest_Score?><br>
+	  <input class="input input-mini" type=number min="100" max="4000" step="100" name=contest_score size=20 value=300>
         </p>
-        <p align=left>
+	<p align=left>
           <?php echo "<h4>".$MSG_Description."(<64kB)</h4>"?>
           <textarea class="kindeditor" rows=13 name=description cols=80></textarea><br>
         </p>

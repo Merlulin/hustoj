@@ -15,6 +15,7 @@ $title = $_POST['title'];
 $title = str_replace(",", "&#44;", $title);
 $time_limit = $_POST['time_limit'];
 $memory_limit = $_POST['memory_limit'];
+$contest_score = $_POST['contest_score'];
 
 $description = $_POST['description'];
 //$description = str_replace("<p>", "", $description); 
@@ -55,6 +56,9 @@ if (false) {
   $title = stripslashes($title);
   $time_limit = stripslashes($time_limit);
   $memory_limit = stripslashes($memory_limit);
+  // 对contest_score也进行反斜杠删除
+  $contest_score = stripslashes($contest_score);
+  // stripslahes: 就是删除反斜杠
   $description = stripslashes($description);
   $input = stripslashes($input);
   $output = stripslashes($output);
@@ -74,7 +78,10 @@ $input = ($input);
 $output = ($output);
 $hint = ($hint);
 //echo "->".$OJ_DATA."<-"; 
-$pid = addproblem($title, $time_limit, $memory_limit, $description, $input, $output, $sample_input, $sample_output, $hint, $source, $spj, $OJ_DATA);
+//addproblem 增加了天梯难度contest_score属性
+
+$pid = addproblem($title, $time_limit, $memory_limit, $description, $input, $output, $sample_input, $sample_output, $hint, $source, $spj, $OJ_DATA, $contest_score);
+
 $basedir = "$OJ_DATA/$pid";
 mkdir($basedir);
 if(strlen($sample_output) && !strlen($sample_input)) $sample_input = "0";

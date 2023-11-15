@@ -91,7 +91,7 @@ if (isset($_GET['cid'])) {
 	//$sql = "SELECT * FROM (SELECT `problem`.`title` AS `title`,`problem`.`problem_id` AS `pid`,source AS source, contest_problem.num as pnum FROM `contest_problem`,`problem` WHERE `contest_problem`.`problem_id`=`problem`.`problem_id` AND `contest_problem`.`contest_id`=? ORDER BY `contest_problem`.`num`) problem LEFT JOIN (SELECT problem_id pid1,count(distinct(user_id)) accepted FROM solution WHERE result=4 AND contest_id=? GROUP BY pid1) p1 ON problem.pid=p1.pid1 LEFT JOIN (SELECT problem_id pid2,count(1) submit FROM solution WHERE contest_id=? GROUP BY pid2) p2 ON problem.pid=p2.pid2 ORDER BY pnum";//AND `problem`.`defunct`='N'
 
 	//$result = pdo_query($sql,$cid,$cid,$cid);
-	$sql = "select p.title,p.problem_id,p.source,cp.num as pnum,cp.c_accepted accepted,cp.c_submit submit from problem p inner join contest_problem cp on p.problem_id = cp.problem_id and cp.contest_id=$cid order by cp.num";
+	$sql = "select p.title,p.problem_id,p.source, p.ladder_score contest_score,cp.num as pnum,cp.c_accepted accepted,cp.c_submit submit from problem p inner join contest_problem cp on p.problem_id = cp.problem_id and cp.contest_id=$cid order by cp.num";
 	$result = mysql_query_cache($sql);
 	$view_problemset = Array();
 
@@ -144,13 +144,35 @@ if (isset($_GET['cid'])) {
 		}
 
 		//$view_problemset[$cnt][3] = $row['source'];
+		if (!$noip){
+			// 编写得分流失的规则处，最后流失后的得分存储于contest_score当中
+			$get_contest_start_time = "SELECT start_time FROM contest WHERE contest_id=?";
+			$contest_start_time = pdo_query($get_contest_start_time, $cid);
+			if($contest_start_time){
+			        $contest_start_time = $contest_start_time[0][0];
+				$contest_start_time_stp = strtotime($contest_start_time);
+			}
 
-		if (!$noip)
-			$view_problemset[$cnt][3] = $row['accepted'];
+			$diff = intval(($now - $contest_start_time_stp) / 60);
+			$diff = max(0, $diff);
+			$diff = min($diff, 120);
+			// $diff = intval($now - $contest_start_time_stp);
+			$contest_score = $row['contest_score'];
+			// $contest_score = max(0, $contest_score - $diff * 10);
+			$contest_score = min(intval($contest_score - $diff * $contest_score / intval(0.027 * $contest_score + 127)), $contest_score);
+			// $attach = intval($contest_score * exp(-0.0008134 * (4500 - $contest_score) * (7201 - $diff)));
+			// $contest_score = intval($contest_score * exp(-0.0002325 * $diff));
+			
+			$view_problemset[$cnt][3] = $contest_score;
+		}
 		else
 			$view_problemset[$cnt][3] = "";
+		if (!$noip)
+			$view_problemset[$cnt][4] = $row['accepted'];
+		else
+			$view_problemset[$cnt][4] = "";
     
-    $view_problemset[$cnt][4] = $row['submit'];
+    $view_problemset[$cnt][5] = $row['submit'];
     $cnt++;
   }
 }

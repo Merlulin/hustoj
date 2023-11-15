@@ -3,6 +3,7 @@ require_once "include/db_info.inc.php";
 require_once "include/my_func.inc.php";
 require_once "include/email.class.php";
 
+
 if(isset($OJ_CSRF) && $OJ_CSRF && $OJ_TEMPLATE=="bs3" && !isset($_SESSION[$OJ_NAME.'_'.'http_judge']))
   require_once(dirname(__FILE__)."/include/csrf_check.php");
 
@@ -15,6 +16,7 @@ if (!isset($_SESSION[$OJ_NAME . '_' . 'user_id'])) {
 
 require_once "include/memcache.php";
 require_once "include/const.inc.php";
+
 
 $now = strftime("%Y-%m-%d %H:%M", time());
 $user_id = $_SESSION[$OJ_NAME.'_'.'user_id'];
@@ -285,9 +287,36 @@ if (!$OJ_BENCHMARK_MODE) {
    }
 }
 
+// 提交的关键部分
 if (~$OJ_LANGMASK&(1<<$language)) {
   $sql = "SELECT nick FROM users WHERE user_id=?";
   $nick = pdo_query($sql, $user_id);
+
+  $get_contest_score_sql = "SELECT ladder_score FROM problem WHERE problem_id=?";
+  $get_contest_start_time = "SELECT start_time FROM contest WHERE contest_id=?";
+  $contest_score = pdo_query($get_contest_score_sql, $id);
+  $contest_start_time = pdo_query($get_contest_start_time, $cid);
+  $now_stp = time();
+
+  if ($contest_start_time){
+    $contest_start_time = $contest_start_time[0][0];
+    $contest_start_time_stp = strtotime($contest_start_time);
+  }
+
+  if ($contest_score){
+    $contest_temp = $contest_score[0][0];
+    $contest_score = $contest_score[0][0];
+    $diff = intval(($now_stp - $contest_start_time_stp) / 60);
+    $diff = max(0, $diff);
+    $diff = min($diff, 120);
+    // $diff = intval($now_stp - $contest_start_time_stp);
+    // $contest_score = max(0, $contest_score - $diff * 10);
+    // $attach = intval($contest_score * exp(-0.0008134 * (4500 - $contest_score) * (7201 - $diff)));
+    $contest_score = min(intval($contest_score - $diff * $contest_score / intval(0.027 * $contest_score + 127)), $contest_score);
+    // $contest_score = intval($contest_score * exp(-0.0002325 * $diff)) + $attach;
+  }else{
+    $contest_score = 0;
+  }
 
   if ($nick) {
     $nick = $nick[0][0];
@@ -301,11 +330,29 @@ if (~$OJ_LANGMASK&(1<<$language)) {
     $insert_id = pdo_query($sql, $id, $user_id, $nick, $language, $ip, $len);
   }
   else {
-    $sql = "INSERT INTO solution(problem_id,user_id,nick,in_date,language,ip,code_length,contest_id,num,result) VALUES(?,?,?,NOW(),?,?,?,?,?,14)";
+    $sql = "INSERT INTO solution(problem_id,user_id,nick,in_date,language,ip,code_length,contest_id,num,result,ladder_score) VALUES(?,?,?,NOW(),?,?,?,?,?,14,?)";
 
+    $havewrong = pdo_query("SELECT * FROM solution WHERE contest_id=? AND problem_id=? AND user_id=?", $cid, $id, $user_id);
+    $haveac = pdo_query("SELECT * FROM solution WHERE contest_id=? AND problem_id=? AND result=4", $cid, $id);
+    $haveac = count($haveac);
+    $havewrong = count($havewrong);
+    if ($haveac>0) {
+        if ($havewrong>0) {
+            $contest_score = max(intval(0.1 * $contest_temp), intval($contest_score - $havewrong * $contest_temp / 25.0));
+		//  $contest_score = max(intval(0.1 * $contest_temp), $contest_score);
+	    // $contest_score = 0;
+	}
+    }
     if ((stripos($title,$OJ_NOIP_KEYWORD)!==false) && isset($OJ_OI_1_SOLUTION_ONLY) && $OJ_OI_1_SOLUTION_ONLY) {
+	   
+      // $havewrong = pdo_query("SELECT COUNT(*) FROM solution WHERE contest_id=? AND num=? AND user_id=?", $cid, $pid, $user_id);
       $delete = pdo_query("DELETE FROM solution WHERE contest_id=? AND user_id=? AND num=?", $cid, $user_id, $pid);
-
+      // $haveac = pdo_query("SELECT COUNT(*) FROM solution WHERE contest_id=? AND num=? AND result=4", $cid, $pid);
+      // if ($haveac>0) {
+        //  if ($havewrong>0) {
+	  //  $contest_score = max(intval(0.1 * $contest_score[0][0]), $contest_score - $havewrong * $contest_score[0][0] / 50.0);
+	// }
+     // }
       if ($delete>0) {
         $sql_fix = "UPDATE problem p INNER JOIN (SELECT problem_id pid ,count(1) ac FROM solution WHERE problem_id=? AND result=4) s ON p.problem_id=s.pid SET p.accepted=s.ac;";        
         $fixed = pdo_query($sql_fix,$id);
@@ -314,7 +361,7 @@ if (~$OJ_LANGMASK&(1<<$language)) {
       }
     }
 
-    $insert_id = pdo_query($sql, $id, $user_id, $nick, $language, $ip, $len, $cid, $pid);
+    $insert_id = pdo_query($sql, $id, $user_id, $nick, $language, $ip, $len, $cid, $pid, $contest_score);
   }
 
   $sql = "INSERT INTO `source_code_user`(`solution_id`,`source`) VALUES(?,?)";

@@ -114,7 +114,7 @@ if ($rows_cnt>0){
                 $ftitle=rawurlencode(preg_replace('/\.|\\\|\\/|\:|\*|\?|\"|\<|\>|\|/','',$title));
                 header ( "content-disposition:   attachment;   filename=contest".$cid."_".$ftitle.".xls" );
         }
-        
+
 }
 if ($start_time==0){
         $view_errors= "No Such Contest";

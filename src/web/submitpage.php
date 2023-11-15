@@ -5,7 +5,7 @@ require_once('./include/memcache.php');
 require_once('./include/setlang.php');
 
 $view_title = $MSG_SUBMIT;
-//$OJ_GUEST=true;
+
 if (!isset($_SESSION[$OJ_NAME.'_'.'user_id'])){
 	if (isset($OJ_GUEST) && $OJ_GUEST) {
 		$_SESSION[$OJ_NAME.'_'.'user_id'] = "Guest";

@@ -40,7 +40,8 @@
         $MSG_Manual="人工判题";
         $MSG_OK="确定";
         $MSG_Explain="输入判定原因与提示";
-        $MSG_MARK="得分";
+	$MSG_MARK="得分";
+	$MSG_RATING="积分";
 	$MSG_SUBMITTING="提交中";
 	$MSG_REMOTE_PENDING="远程等待";
 	$MSG_REMOTE_JUDGING="远程判题";	
@@ -76,6 +77,7 @@
 	$MSG_PR="等待重判";
 	$MSG_CI="编译中";
 	$MSG_RJ="运行并评判";
+	$MSG_SCORE="题目分值";
 	$MSG_AC="正确";
 	$MSG_PE="格式错误";
 	$MSG_WA="答案错误";
@@ -149,6 +151,7 @@
 	$MSG_Source= "来源" ;
 	$MSG_Time_Limit="时间限制";
 	$MSG_Memory_Limit="内存限制";
+	$MSG_Contest_Score="天梯难度";
 	$MSG_EDIT="编辑";
 	$MSG_TESTDATA="测试数据";
 	$MSG_CLICK_VIEW_HINT="点击查看剧透级题解";

@@ -8,23 +8,23 @@
 static 	$DB_HOST="localhost";  //数据库服务器ip或域名
 static 	$DB_NAME="jol";   //数据库名
 static 	$DB_USER="hustoj";  //数据库账户
-static 	$DB_PASS="E7z7Ryav3G3l3VOndmVqEdIZrUye72";  //数据库密码
+static 	$DB_PASS="yImthFasv7YLu9HuZSemM6BD4EHOHf";  //数据库密码
 
-static 	$OJ_NAME="富阳信息学交流平台";  //左上角显示的系统名称, 尽量简洁，避免用中文和空格，如需中文、长字符串、图片，可以直接修改template/syzoj/header.php
+static 	$OJ_NAME="HUSTOJ";  //左上角显示的系统名称, 尽量简洁，避免用中文和空格，如需中文、长字符串、图片，可以直接修改template/syzoj/header.php
 static 	$OJ_HOME="./";    //主页目录
 static 	$OJ_ADMIN="root@localhost";  //管理员email
 static 	$OJ_DATA="/home/judge/data";  //测试数据目录
 static 	$OJ_BBS=false; //设为"discuss3" 启用， "bbs" for phpBB3 bridge or "discuss" for mini-forum or false for close any 
 static  $OJ_ONLINE=false;  //是否记录在线情况
-static  $OJ_LANG="cn";  //默认语言
+static  $OJ_LANG="en";  //默认语言
 static  $OJ_SIM=false;  //显示相似度，注意只是显示，启动检测的开关在judge.conf，且自己抄自己不计为抄袭
 static  $OJ_DICT=false; //显示在线翻译
-static  $OJ_LANGMASK=4194236; //掩码计算器:https://pigeon-developer.github.io/hustoj-langmask/
+static  $OJ_LANGMASK=4194224; //掩码计算器:https://pigeon-developer.github.io/hustoj-langmask/
 static  $OJ_ACE_EDITOR=true;  // 是否启用有高亮提示的提交代码输入框
 static  $OJ_AUTO_SHARE=false; //true: 设为true则通过的题目可在统计页查看其他人代码.
 static  $OJ_CSS="white.css";  // bing.css | kawai.css | black.css | blue.css | green.css | hznu.css
 static  $OJ_SAE=false; //使用新浪引擎
-static  $OJ_VCODE=true;  //验证码
+static  $OJ_VCODE=false;  //验证码
 static 	$OJ_REG_SPEED=0 ; //限制每小时同ip注册个数，0不限制
 static  $OJ_APPENDCODE=true;  // 代码预定模板
 if (!$OJ_APPENDCODE) 	ini_set("session.cookie_httponly", 1);   // APPENDCODE模式需要允许javascript操作cookie保存当前语言。
@@ -50,7 +50,7 @@ static  $OJ_TEMPLATE="syzoj"; //使用的默认模板,template目录下的每个
 static 	$OJ_BG="/image/background.jpg";  //双引号里面填写背景图片的url，默认bing，每小时自动更换bing.com最新背景。
 static  $OJ_LOGIN_MOD="hustoj"; //需要在include目录下配置login-xxxx.php来调用其他登录模块。
 static  $OJ_REGISTER=true; //允许注册新用户
-static  $OJ_REG_NEED_CONFIRM=true; //新注册用户需要审核
+static  $OJ_REG_NEED_CONFIRM=false; //新注册用户需要审核
 static  $OJ_EMAIL_CONFIRM=false; //允许邮件激活账号
 
 static  $OJ_NEED_LOGIN=false; //需要登录才能访问
@@ -64,7 +64,7 @@ static  $OJ_SHOW_METAL=true; //榜单上是否按比例显示奖牌
 static  $OJ_SHOW_DIFF=true; //是否显示WA的对比说明
 static  $OJ_DL_1ST_WA_ONLY=false; //是否只允许下载第一个WA的测试数据(前提需开启$OJ_DOWNLOAD)
 static  $OJ_DOWNLOAD=false; //是否允许下载所有WA的测试数据
-static  $OJ_TEST_RUN=true; //提交界面是否允许测试运行
+static  $OJ_TEST_RUN=false; //提交界面是否允许测试运行
 static  $OJ_MATHJAX=true;  // 激活mathjax
 static  $OJ_BLOCKLY=false; //是否启用Blockly界面 , remember to execute `wget http://dl.hustoj.com/blockly.tar.gz; tar xzf blockly.tar.gz` in /home/judge/src/web
 static  $OJ_ENCODE_SUBMIT=false; //是否启用base64编码提交的功能，用来回避WAF防火墙误拦截。

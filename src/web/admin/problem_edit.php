@@ -51,7 +51,9 @@ include_once("kindeditor.php") ;
           <input class="input input-mini" type=number min="0.001" max="300" step="0.001" name=time_limit size=20 value="<?php echo $row['time_limit']?>"> sec<br><br>
           <?php echo $MSG_Memory_Limit?><br>
           <input class="input input-mini" type=number min="1" max="1024" step="1" name=memory_limit size=20 value="<?php echo $row['memory_limit']?>"> MiB<br><br>
-        </p>
+	  <?php echo $MSG_Contest_Score?><br>
+	  <input class="input input-mini" type=number min="100" max="4000" step="100" name=contest_score size=20 value="<?php echo $row['ladder_score']?>">       
+	</p>
       <p align=left>
         <?php echo "<h4>".$MSG_Description."</h4>"?>
         <textarea class="kindeditor" rows=13 name=description cols=80><?php echo htmlentities($row['description'],ENT_QUOTES,"UTF-8")?></textarea><br>
@@ -122,6 +124,7 @@ include_once("kindeditor.php") ;
       $time_limit = $_POST['time_limit'];
 
       $memory_limit = $_POST['memory_limit'];
+      $contest_score = $_POST['contest_score'];
 
       $description = $_POST['description'];
      // $description = str_replace("<p>", "", $description);
@@ -156,7 +159,8 @@ include_once("kindeditor.php") ;
       if (false) {
         $title = stripslashes($title);
         $time_limit = stripslashes($time_limit);
-        $memory_limit = stripslashes($memory_limit);
+	$memory_limit = stripslashes($memory_limit);
+	$contest_score = stripslashes($contest_score);
         $description = stripslashes($description);
         $input = stripslashes($input);
         $output = stripslashes($output);
@@ -191,9 +195,9 @@ include_once("kindeditor.php") ;
 
       $spj = intval($spj);
 
-      $sql = "UPDATE `problem` SET `title`=?,`time_limit`=?,`memory_limit`=?, `description`=?,`input`=?,`output`=?,`sample_input`=?,`sample_output`=?,`hint`=?,`source`=?,`spj`=?,remote_oj=?,remote_id=?,`in_date`=NOW() WHERE `problem_id`=?";
+      $sql = "UPDATE `problem` SET `title`=?,`time_limit`=?,`memory_limit`=?, `description`=?,`input`=?,`output`=?,`sample_input`=?,`sample_output`=?,`hint`=?,`source`=?,`spj`=?,remote_oj=?,remote_id=?,`in_date`=NOW(), `ladder_score`=? WHERE `problem_id`=?";
 
-      @pdo_query($sql,$title,$time_limit,$memory_limit,$description,$input,$output,$sample_input,$sample_output,$hint,$source,$spj,$remote_oj,$remote_id,$id);
+      @pdo_query($sql,$title,$time_limit,$memory_limit,$description,$input,$output,$sample_input,$sample_output,$hint,$source,$spj,$remote_oj,$remote_id, $contest_score, $id);
 
       echo "Edit OK!<br>";
       echo "<a href='../problem.php?id=$id'>See The Problem!</a>";

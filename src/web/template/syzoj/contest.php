@@ -38,8 +38,9 @@
                 <div class="ui buttons">
                     <a class="ui small blue button" href="contestrank.php?cid=<?php echo $view_cid?>">ACM排行榜</a>
                     <a class="ui small yellow button" href="contestrank-oi.php?cid=<?php echo $view_cid?>">OI排行榜</a>
-                    <a class="ui small positive button" href="status.php?cid=<?php echo $view_cid?>">提交记录</a>
-                    <!-- <a class="ui small pink button" href="conteststatistics.php?cid=<?php echo $view_cid?>">比赛统计</a> -->
+                    <a class="ui small pink button" href="contestrank-ladder.php?cid=<?php echo $view_cid?>">竞赛排行</a>
+		    <a class="ui small positive button" href="status.php?cid=<?php echo $view_cid?>">提交记录</a>
+		    <!-- <a class="ui small pink button" href="conteststatistics.php?cid=<?php echo $view_cid?>">比赛统计</a> -->
                 </div>
                 <div class="ui buttons right floated">
 
@@ -88,6 +89,7 @@
                             <th class="two wide" style="text-align: center"><?php echo $MSG_PROBLEM_ID ?></th>
                             <th><?php echo $MSG_TITLE ?></th>
                             <!-- <th><?php //echo $MSG_SOURCE ?></th>  -->
+       			    <th class="one wide center aligned"><?php echo $MSG_SCORE?></th>
                             <th class="one wide center aligned"><?php echo $MSG_AC ?></th>
                             <th class="one wide center aligned"><?php echo $MSG_SUBMIT_NUM ?></th>
                         </tr>
