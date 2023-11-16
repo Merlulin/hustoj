@@ -207,8 +207,8 @@ for ($i=0;$i<$rows_cnt;$i++){
                 $user_name=$n_user;
 	
 		// 为每个用户对象TM的rating和pre_rating读取数据
-		$sql="SELECT rating, pre_rating FROM users WHERE user_id=?";
-		$user_rating_info = pdo_query($sql,$n_user);
+		$sql="SELECT rating, pre_rating FROM contest_user WHERE user_id=? AND contest_id=?";
+		$user_rating_info = pdo_query($sql,$n_user,$cid);
 		$user_rating_info = $user_rating_info[0];
 		$U[$user_cnt]->rating=$user_rating_info['rating'];
 		$U[$user_cnt]->pre_rating=$user_rating_info['pre_rating'];      
