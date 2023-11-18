@@ -53,6 +53,20 @@ if (!(isset($_SESSION[$OJ_NAME.'_'.'administrator']))){
 				$sql="UPDATE `solution` SET `result`=1 WHERE `contest_id`=? and problem_id>0";
 				pdo_query($sql,$rjcid) ;
 			}
+			// 一旦重判某一竞赛，我们需要对竞赛的finished标签重置为0，这样使得后台check进程检测到该竞赛已结束，并且尚未影响竞赛积分，需要重新计算和更新各用户积分。
+			// 需要注意的是，我们如果要重新排积分，那么我们就需要先覆盖掉之前该竞赛计算出来的积分，所以需要先用pre_rating 重新 赋值回rating，使得check进程在rating计算依据上一次的rating进行重新计算。
+			
+			$check_contest_has_count_rating_sql="SELECT count(1) FROM `contest_user` WHERE contest_id=?";
+			// 仅当竞赛已经进行过rating更新才需要用pre_rating来覆盖rating
+			$user_cnt=pdo_query($check_contest_has_count_rating_sql, $rjcid);
+			$user_cnt=$user_cnt[0][0];
+			if($user_cnt > 0){
+				$reback_rating_sql="UPDATE `users` SET rating=pre_rating WHERE user_id IN (SELECT user_id FROM contest_user WHERE contest_id=?)";
+				pdo_query($reback_rating_sql, $rjcid);
+			}
+			$rcount_rating_sql="UPDATE `contest` SET finished = 0 WHERE contest_id=?";
+			pdo_query($rcount_rating_sql, $rjcid);
+
 			$url="../status.php?cid=".($rjcid);
 			echo "Rejudged Contest id :".$rjcid;
 			echo "<script>location.href='$url';</script>";
