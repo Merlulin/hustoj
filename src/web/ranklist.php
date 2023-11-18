@@ -56,7 +56,7 @@
                 if ($rank < 0)
                         $rank = 0;
 
-                $sql = "SELECT `user_id`,`nick`,`solved`,`submit` FROM `users` $where ORDER BY `solved` DESC,submit,reg_time  LIMIT  " . strval ( $rank ) . ",$page_size";
+                $sql = "SELECT `user_id`,`nick`,`solved`,`submit`,`rating` FROM `users` $where ORDER BY `rating` DESC,`solved` DESC,submit,reg_time  LIMIT  " . strval ( $rank ) . ",$page_size";
 
                 if($scope && $view_total < 1000 ){
                         $s="";
@@ -75,7 +75,7 @@
                                         $s=date('Y').'-01-01';
                         }
                         //echo $s."<-------------------------";
-                        $sql="SELECT users.`user_id`,`nick`,s.`solved`,t.`submit` FROM `users`
+                        $sql="SELECT users.`user_id`,`nick`,s.`solved`,t.`submit`,users.`rating` FROM `users`
                                         inner join
                                         (select count(distinct problem_id) solved ,user_id from solution 
 						where user_id not in (".$OJ_RANK_HIDDEN.") and in_date>str_to_date('$s','%Y-%m-%d') and result=4 
@@ -87,7 +87,7 @@
 						group by user_id order by submit desc ) t 
 					on users.user_id=t.user_id
 					and users.user_id not in (".$OJ_RANK_HIDDEN.") and defunct='N'
-                                ORDER BY s.`solved` DESC,t.submit,reg_time  LIMIT  0,50
+                                ORDER BY users.`rating` DESC,s.`solved` DESC,t.submit,reg_time  LIMIT  0,50
                          ";
 //                      echo $sql;
                 }
@@ -119,13 +119,15 @@
                         $view_rank[$i][0]= $rank;
                         $view_rank[$i][1]=  "<div class=center><a href='userinfo.php?user=" .htmlentities ( $row['user_id'],ENT_QUOTES,"UTF-8") . "'>" . $row['user_id'] . "</a>"."</div>";
                         $view_rank[$i][2]=  "<div class=center>" . htmlentities ( $row['nick'] ,ENT_QUOTES,"UTF-8") ."</div>";
-                        $view_rank[$i][3]=  "<div class=center><a href='status.php?user_id=" .htmlentities ( $row['user_id'],ENT_QUOTES,"UTF-8") ."&jresult=4'>" . $row['solved']."</a>"."</div>";
-                        $view_rank[$i][4]=  "<div class=center><a href='status.php?user_id=" . htmlentities ($row['user_id'],ENT_QUOTES,"UTF-8") ."'>" . $row['submit'] . "</a>"."</div>";
+			// 增加rating列
+			$view_rank[$i][3]=  "<div class=center>" . htmlentities ( $row['rating'] ,ENT_QUOTES,"UTF-8") ."</div>";
+			$view_rank[$i][4]=  "<div class=center><a href='status.php?user_id=" .htmlentities ( $row['user_id'],ENT_QUOTES,"UTF-8") ."&jresult=4'>" . $row['solved']."</a>"."</div>";
+                        $view_rank[$i][5]=  "<div class=center><a href='status.php?user_id=" . htmlentities ($row['user_id'],ENT_QUOTES,"UTF-8") ."'>" . $row['submit'] . "</a>"."</div>";
 
                         if ($row['submit'] == 0)
-                                $view_rank[$i][5]= "0.00%";
+                                $view_rank[$i][6]= "0.00%";
                         else
-                                $view_rank[$i][5]= sprintf ( "%.02lf%%", 100 * $row['solved'] / $row['submit'] );
+                                $view_rank[$i][6]= sprintf ( "%.02lf%%", 100 * $row['solved'] / $row['submit'] );
 
 //                      $i++;
                 }
