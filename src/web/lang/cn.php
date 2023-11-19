@@ -169,7 +169,7 @@
         $MSG_NORMAL="正常";	
         $MSG_RESERVED="未启用";
 
-	$MSG_SETRATING="修改积分";
+    $MSG_SETRATING="修改积分";
 	$MSG_TEAMGENERATOR="比赛队帐号生成器";
 	$MSG_SETMESSAGE="设置公告";
 	$MSG_SETPASSWORD="修改密码";
@@ -258,7 +258,7 @@
   $MSG_RECENT_CONTEST="近期比赛";
   $MSG_PASS_RATE="通过率";
   $MSG_SHOW_TAGS="显示分类标签";
-  $MSG_SHOW_ALL_TAGS="所有标签";  
+  $MSG_SHOW_ALL_TAGS="所有标签";
 
   $MSG_HELP_SETRATING="为已注册用户重置联赛积分";
   $MSG_HELP_SEEOJ="跳转回到前台";
