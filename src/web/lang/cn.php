@@ -169,6 +169,7 @@
         $MSG_NORMAL="正常";	
         $MSG_RESERVED="未启用";
 
+	$MSG_SETRATING="修改积分";
 	$MSG_TEAMGENERATOR="比赛队帐号生成器";
 	$MSG_SETMESSAGE="设置公告";
 	$MSG_SETPASSWORD="修改密码";
@@ -187,6 +188,7 @@
   //contest.php
   $MSG_PRIVATE_WARNING="比赛尚未开始或私有，不能查看题目。";
   $MSG_PRIVATE_USERS_ADD="*可以将学生学号从Excel整列复制过来，然后要求他们用学号做UserID注册,就能进入Private的比赛作为作业和测验。";
+  $MSG_PRIVATE_USERS_RATING_EDIT="*可以将学生学号从Excel整列复制过来，统一清零学生的联赛积分";
   $MSG_PLS_ADD="*请选择所有可以通过Ctrl +单击提交的语言。";
 	$MSG_TIME_WARNING="比赛开始前。";
   $MSG_WATCH_RANK="点击这里查看做题排名。";
@@ -258,6 +260,7 @@
   $MSG_SHOW_TAGS="显示分类标签";
   $MSG_SHOW_ALL_TAGS="所有标签";  
 
+  $MSG_HELP_SETRATING="为已注册用户重置联赛积分";
   $MSG_HELP_SEEOJ="跳转回到前台";
   $MSG_HELP_ADD_NEWS="添加首页显示的新闻";
   $MSG_HELP_NEWS_LIST="管理已经发布的新闻";

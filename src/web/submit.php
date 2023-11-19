@@ -294,25 +294,34 @@ if (~$OJ_LANGMASK&(1<<$language)) {
 
   $get_contest_score_sql = "SELECT ladder_score FROM problem WHERE problem_id=?";
   $get_contest_start_time = "SELECT start_time FROM contest WHERE contest_id=?";
+  $get_contest_end_time = "SELECT end_time FROM contest WHERE contest_id=?";
   $contest_score = pdo_query($get_contest_score_sql, $id);
   $contest_start_time = pdo_query($get_contest_start_time, $cid);
+  $contest_end_time = pdo_query($get_contest_end_tme, $cid);
   $now_stp = time();
 
   if ($contest_start_time){
     $contest_start_time = $contest_start_time[0][0];
     $contest_start_time_stp = strtotime($contest_start_time);
   }
-
+  
+  if ($contest_end_time) {
+    $contest_end_time = $contest_start_time[0][0];
+    $contest_end_time_stp = strtotime($contest_end_time);
+  }
   if ($contest_score){
     $contest_temp = $contest_score[0][0];
     $contest_score = $contest_score[0][0];
+    $now_stp = min($now_stp, $contest_end_time_stp);
     $diff = intval(($now_stp - $contest_start_time_stp) / 60);
     $diff = max(0, $diff);
-    $diff = min($diff, 120);
+    // $diff = min($diff, 120);
     // $diff = intval($now_stp - $contest_start_time_stp);
     // $contest_score = max(0, $contest_score - $diff * 10);
     // $attach = intval($contest_score * exp(-0.0008134 * (4500 - $contest_score) * (7201 - $diff)));
-    $contest_score = min(intval($contest_score - $diff * $contest_score / intval(0.027 * $contest_score + 127)), $contest_score);
+    $minscore = intval(0.2 * $contest_score);
+    $contest_score = min(intval($contest_score - ($diff / 2) * $contest_score / intval(0.027 * $contest_score + 127)), $contest_score);
+    $contest_score = max($contest_score, $minscore);
     // $contest_score = intval($contest_score * exp(-0.0002325 * $diff)) + $attach;
   }else{
     $contest_score = 0;

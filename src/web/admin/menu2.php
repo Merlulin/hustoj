@@ -57,6 +57,7 @@
 
 <?php }?>
 <?php if (isset($_SESSION[$OJ_NAME.'_'.'administrator'])||isset( $_SESSION[$OJ_NAME.'_'.'password_setter'])){?>
+      <a class="dropdown-item btn-sm" href="user_rating.php" target="main" title="<?php echo $MSG_HELP_SETPASSWORD?>"><b><?php echo $MSG_USER."-".$MSG_SETRATING?></b></a>
       <a class="dropdown-item btn-sm" href="changepass.php" target="main" title="<?php echo $MSG_HELP_SETPASSWORD?>"><b><?php echo $MSG_USER."-".$MSG_SETPASSWORD?></b></a>
 <?php }?>
 <?php if (isset($_SESSION[$OJ_NAME.'_'.'administrator'])){?>

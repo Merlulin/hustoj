@@ -147,19 +147,27 @@ if (isset($_GET['cid'])) {
 		if (!$noip){
 			// 编写得分流失的规则处，最后流失后的得分存储于contest_score当中
 			$get_contest_start_time = "SELECT start_time FROM contest WHERE contest_id=?";
+			$get_contest_end_time = "SELECT end_time FROM contest WHERE contest_id=?";
 			$contest_start_time = pdo_query($get_contest_start_time, $cid);
+			$contest_end_time = pdo_query($get_contest_end_time, $cid);
 			if($contest_start_time){
 			        $contest_start_time = $contest_start_time[0][0];
 				$contest_start_time_stp = strtotime($contest_start_time);
 			}
-
+			if ($contest_end_time) {
+			        $contest_end_time = $contest_end_time[0][0];
+				$contest_end_time_stp = strtotime($contest_end_time);
+			}
+			$now = min($now, $contest_end_time_stp);
 			$diff = intval(($now - $contest_start_time_stp) / 60);
 			$diff = max(0, $diff);
-			$diff = min($diff, 120);
+			// $diff = min($diff, 120);
 			// $diff = intval($now - $contest_start_time_stp);
 			$contest_score = $row['contest_score'];
+			$minscore = intval(0.2 * $contest_score);
 			// $contest_score = max(0, $contest_score - $diff * 10);
-			$contest_score = min(intval($contest_score - $diff * $contest_score / intval(0.027 * $contest_score + 127)), $contest_score);
+		        $contest_score = min(intval($contest_score - ($diff / 2.0) * $contest_score / intval(0.027 * $contest_score + 127)), $contest_score);
+			$contest_score = max($contest_score, $minscore);
 			// $attach = intval($contest_score * exp(-0.0008134 * (4500 - $contest_score) * (7201 - $diff)));
 			// $contest_score = intval($contest_score * exp(-0.0002325 * $diff));
 			

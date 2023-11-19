@@ -25,6 +25,7 @@
   <li><a class='btn btn-primary' href="user_set_ip.php" target="main" title="<?php echo $MSG_SET_LOGIN_IP?>"><b><?php echo $MSG_SET_LOGIN_IP?></b></a>
   <?php }
   if (isset($_SESSION[$OJ_NAME.'_'.'administrator'])||isset( $_SESSION[$OJ_NAME.'_'.'password_setter'] )){?>
+  <li><a class='btn btn-primary' href="user_rating.php" target="main" title="<?php echo $MSG_HELP_SETPASSWORD?>"><b><?php echo $MSG_SETPASSWORD?></b></a>
   <li><a class='btn btn-primary' href="changepass.php" target="main" title="<?php echo $MSG_HELP_SETPASSWORD?>"><b><?php echo $MSG_SETPASSWORD?></b></a>
   <?php }
   if (isset($_SESSION[$OJ_NAME.'_'.'administrator'])){?>
