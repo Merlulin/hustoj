@@ -297,7 +297,7 @@ if (~$OJ_LANGMASK&(1<<$language)) {
   $get_contest_end_time = "SELECT end_time FROM contest WHERE contest_id=?";
   $contest_score = pdo_query($get_contest_score_sql, $id);
   $contest_start_time = pdo_query($get_contest_start_time, $cid);
-  $contest_end_time = pdo_query($get_contest_end_tme, $cid);
+  $contest_end_time = pdo_query($get_contest_end_time, $cid);
   $now_stp = time();
 
   if ($contest_start_time){
@@ -306,7 +306,7 @@ if (~$OJ_LANGMASK&(1<<$language)) {
   }
   
   if ($contest_end_time) {
-    $contest_end_time = $contest_start_time[0][0];
+    $contest_end_time = $contest_end_time[0][0];
     $contest_end_time_stp = strtotime($contest_end_time);
   }
   if ($contest_score){
